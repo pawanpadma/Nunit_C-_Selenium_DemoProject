@@ -10,13 +10,13 @@ namespace Nunit_Selenium.StepDef {
     public sealed class Hooks {
         public static IWebDriver driver = InitBrowser.Getbrowser();
 
-        [OneTimeSetUp]
+        [BeforeTestRun]
         public static void loginToApplication() {
             driver.Navigate().GoToUrl(ReadEnv.ReadData("base", "appUrl"));
             driver.Manage().Window.Maximize();
         }
 
-        [OneTimeTearDown]
+        [AfterTestRun]
         public static void CloseBrowser() {
             driver.Quit();
         }
